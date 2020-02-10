@@ -21,23 +21,13 @@ end
 # The return value should be like:
 #
 # { directorOne => allTheMoneyTheyMade, ... }
-def directors_totals(nds)
+def  directors_totals(nds)
 result=[]
-row = 0 
-  while row < nds.length 
-    total = 0
-
-    names= nds[row][:name]
-    movies= nds[row][:movies]
-    column=0 
-    while column < movies.length 
-      t=  movies[column][:worldwide_gross]
-      column += 1
-      total +=  t
-  end
-    row += 1
-     result << [names,total]
-  end
-  result.to_h
+r=0
+while r < nds.length 
+  director= nds[r]
+  result << [director[:name],gross_for_director(director)]
+  r+=1
 end
-
+result.to_h
+end
